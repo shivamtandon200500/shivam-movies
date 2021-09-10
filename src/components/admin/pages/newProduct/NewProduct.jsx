@@ -3,7 +3,6 @@ import { createMovie } from "../../../../context/movieContext/apiCalls";
 import { MovieContext } from "../../../../context/movieContext/MovieContext";
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios" 
 export default function NewProduct() {
   const history = useHistory()
   const [movie, setMovie] = useState(null);

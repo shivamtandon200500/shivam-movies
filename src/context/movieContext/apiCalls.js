@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../../axiosInstance"
 import {
   createMovieFailure,
   createMovieStart,
@@ -14,7 +14,7 @@ import {
 export const getMovies = async (dispatch) => {
   dispatch(getMoviesStart());
   try {
-    const res = await axios.get("/movie", {
+    const res = await axiosInstance.get("/movie", {
       headers: {
         token:"Bearer "+JSON.parse(localStorage.getItem("user")).accessToken
         // token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmNhZTViMjhjYTU5Njk5ODMyODUwYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMDMzMDk2OCwiZXhwIjoxNjMwNzYyOTY4fQ.szoKaJDYuIzLMQvMIv2X8RjsDHrmcPclvaCz1YYE9pw"
@@ -31,7 +31,7 @@ export const getMovies = async (dispatch) => {
 export const createMovie = async (movie, dispatch) => {
   dispatch(createMovieStart());
   try {
-    const res = await axios.post("/movie/", movie, {
+    const res = await axiosInstance.post("/movie/", movie, {
       headers: {
         token:"Bearer "+JSON.parse(localStorage.getItem("user")).accessToken
         // "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmNhZTViMjhjYTU5Njk5ODMyODUwYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMDMzMDk2OCwiZXhwIjoxNjMwNzYyOTY4fQ.szoKaJDYuIzLMQvMIv2X8RjsDHrmcPclvaCz1YYE9pw" ,
@@ -47,7 +47,7 @@ export const createMovie = async (movie, dispatch) => {
 export const deleteMovie = async (id, dispatch) => {
   dispatch(deleteMovieStart());
   try {
-    await axios.delete("/movie/" + id, {
+    await axiosInstance.delete("/movie/" + id, {
       headers: {
         token:"Bearer "+JSON.parse(localStorage.getItem("user")).accessToken
         //  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmNhZTViMjhjYTU5Njk5ODMyODUwYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMDMzMDk2OCwiZXhwIjoxNjMwNzYyOTY4fQ.szoKaJDYuIzLMQvMIv2X8RjsDHrmcPclvaCz1YYE9pw",

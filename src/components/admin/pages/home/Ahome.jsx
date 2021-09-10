@@ -4,7 +4,7 @@ import "./Ahome.css";
 import WidgetSm from "../../components/widgetSm/WidgetSm";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
 import { useEffect, useMemo, useState } from "react";
-import axios from "axios"
+import axiosInstance from "../../../../axiosInstance"
 export default function Ahome() {
   const MONTHS= useMemo(()=>[
     "Jan",
@@ -26,7 +26,7 @@ export default function Ahome() {
   useEffect(()=>{
     const getStats=async()=>{
       try{
-      const res=await axios.get("/users/stats",{
+      const res=await axiosInstance.get("/users/stats",{
         headers: {
           token:"Bearer "+JSON.parse(localStorage.getItem("user")).accessToken
           // "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmNhZTViMjhjYTU5Njk5ODMyODUwYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMDkxNjI4OSwiZXhwIjoxNjMxMzQ4Mjg5fQ.Hkq3HaVjBMUA5IvzdT3sN8gv5zSLVXiGXG4l_QF6aOM"

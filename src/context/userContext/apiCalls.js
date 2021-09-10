@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../../axiosInstance"
 import {
   createUserFailure,
   createUserStart,
@@ -14,7 +14,7 @@ import {
 export const getUsers = async (dispatch) => {
   dispatch(getusersStart());
   try {
-    const res = await axios.get("/users/", {
+    const res = await axiosInstance.get("/users/", {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -29,7 +29,7 @@ export const getUsers = async (dispatch) => {
 export const createUser= async (user, dispatch) => {
   dispatch(createUserStart());
   try {
-    const res = await axios.post("/users/", user, {
+    const res = await axiosInstance.post("/users/", user, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -44,7 +44,7 @@ export const createUser= async (user, dispatch) => {
 export const deleteUser = async (id, dispatch) => {
   dispatch(deleteUserStart());
   try {
-    await axios.delete("/users/" + id, {
+    await axiosInstance.delete("/users/" + id, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },

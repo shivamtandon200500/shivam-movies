@@ -6,9 +6,8 @@ import {
   ThumbDownOutlined,
 } from "@material-ui/icons";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../../axiosInstance"
 import { Link } from "react-router-dom";
-import HoverVideoPlayer from 'react-hover-video-player';
 
 
 export default function ListItem({ index, item }) {
@@ -18,7 +17,7 @@ export default function ListItem({ index, item }) {
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const res = await axios.get("/movie/find/" + item, {
+        const res = await axiosInstance.get("/movie/find/" + item, {
           headers: {
             token:"Bearer "+JSON.parse(localStorage.getItem("user")).accessToken
             // "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmNhZTViMjhjYTU5Njk5ODMyODUwYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMDkxNjI4OSwiZXhwIjoxNjMxMzQ4Mjg5fQ.Hkq3HaVjBMUA5IvzdT3sN8gv5zSLVXiGXG4l_QF6aOM",
