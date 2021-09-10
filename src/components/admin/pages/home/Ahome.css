@@ -1,0 +1,9 @@
+.Ahome{
+    flex: 4;
+    background-color: white !important;
+}
+
+.homeWidgets{
+    display: flex;
+    margin: 20px;
+}
