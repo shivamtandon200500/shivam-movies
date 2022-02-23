@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { login } from "../../context/authContext/apiCalls";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import "./login.scss";
 
@@ -40,7 +41,10 @@ export default function Login() {
             Sign In
           </button>
           <span>
-            New to Netflix? <b>Sign up now.</b>
+            New to Netflix? 
+            <Link to="/register" style={{"z-index":"999"}} className="link">
+            <b>Sign up now.</b>
+          </Link>
           </span>
           <small>
             This page is protected by Google reCAPTCHA to ensure you're not a
